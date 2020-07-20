@@ -9,9 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Legatus\Support\EventDispatcher\Tests;
+namespace Legatus\Support;
 
-use Legatus\Support\EventDispatcher\InMemoryListenerProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,8 +30,8 @@ class InMemoryListenerProviderTest extends TestCase
         $event = new UserLoggedIn('2', new \DateTimeImmutable('2020-01-01'));
         $iterable = $provider->getListenersForEvent($event);
 
-        $this->assertSame($listenerTwo, $iterable->current());
+        self::assertSame($listenerTwo, $iterable->current());
         $iterable->next();
-        $this->assertSame($listenerOne, $iterable->current());
+        self::assertSame($listenerOne, $iterable->current());
     }
 }

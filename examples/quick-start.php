@@ -1,13 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
-use Legatus\Support\EventDispatcher\EventDispatcher;
-use Legatus\Support\EventDispatcher\InMemoryListenerProvider;
+/*
+ * This file is part of the Legatus project organization.
+ * (c) Matías Navarro-Carter <contact@mnavarro.dev>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-$provider = new InMemoryListenerProvider();
-$dispatcher = new EventDispatcher($provider);
+$provider = new Legatus\Support\InMemoryListenerProvider();
+$dispatcher = new Legatus\Support\EventDispatcher($provider);
 
 $provider->register(SomeEvent::class, new SomeListener());
 $dispatcher->dispatch(new SomeEvent());

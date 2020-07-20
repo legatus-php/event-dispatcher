@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Legatus\Support\EventDispatcher\Tests;
+namespace Legatus\Support;
 
 use DateTimeInterface;
 

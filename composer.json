@@ -12,12 +12,12 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Legatus\\Support\\EventDispatcher\\": "src"
+            "Legatus\\Support\\": ["src/event-dispatcher"]
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Legatus\\Support\\EventDispatcher\\Tests\\": "tests"
+            "Legatus\\Support\\": ["tests/event-dispatcher"]
         }
     },
     "require": {
