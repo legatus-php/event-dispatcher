@@ -14,10 +14,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
+namespace Legatus\Support;
 
-$provider = new Legatus\Support\InMemoryListeners();
-$dispatcher = new Legatus\Support\EventDispatcher($provider);
+use Legatus\Support\Annotation\ListensTo;
 
-$provider->register(SomeEvent::class, new SomeListener());
-$dispatcher->dispatch(new SomeEvent());
+class FakeSubscriber
+{
+    /**
+     * @param UserRegistered $event
+     * @ListensTo("Legatus\Support\UserRegistered")
+     */
+    public function sendEmail(UserRegistered $event): void
+    {
+        $name = $event->getEventName();
+    }
+}

@@ -14,10 +14,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
+namespace Legatus\Support;
 
-$provider = new Legatus\Support\InMemoryListeners();
-$dispatcher = new Legatus\Support\EventDispatcher($provider);
-
-$provider->register(SomeEvent::class, new SomeListener());
-$dispatcher->dispatch(new SomeEvent());
+/**
+ * Class UserRegistered.
+ */
+class UserRegistered
+{
+    public function getEventName(): string
+    {
+        return 'user-registered';
+    }
+}

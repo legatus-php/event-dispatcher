@@ -14,10 +14,21 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
+namespace Legatus\Support\Annotation;
 
-$provider = new Legatus\Support\InMemoryListeners();
-$dispatcher = new Legatus\Support\EventDispatcher($provider);
-
-$provider->register(SomeEvent::class, new SomeListener());
-$dispatcher->dispatch(new SomeEvent());
+/**
+ * Class ListensTo.
+ *
+ * @Annotation
+ * @Target({"METHOD"})
+ */
+class ListensTo
+{
+    /**
+     * @Required
+     *
+     * @var string
+     * @psalm-var class-string
+     */
+    public string $event;
+}

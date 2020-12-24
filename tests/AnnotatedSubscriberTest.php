@@ -14,10 +14,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
+namespace Legatus\Support;
 
-$provider = new Legatus\Support\InMemoryListeners();
-$dispatcher = new Legatus\Support\EventDispatcher($provider);
+use PHPUnit\Framework\TestCase;
 
-$provider->register(SomeEvent::class, new SomeListener());
-$dispatcher->dispatch(new SomeEvent());
+/**
+ * Class AnnotatedSubscriberTest.
+ */
+class AnnotatedSubscriberTest extends TestCase
+{
+}

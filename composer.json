@@ -12,18 +12,19 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Legatus\\Support\\": ["src/event-dispatcher"]
+            "Legatus\\Support\\": ["src/event-dispatcher", "src/listener-factory"]
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Legatus\\Support\\": ["tests/event-dispatcher"]
+            "Legatus\\Support\\": ["tests"]
         }
     },
     "require": {
         "php": ">=7.4",
         "psr/event-dispatcher": "^1.0",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "doctrine/annotations": "^1.11"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",
@@ -33,15 +34,10 @@
     },
     "scripts": {
         "lint": "php-cs-fixer fix --ansi",
-        "ci:style": "php-cs-fixer fix --dry-run -vvv --ansi",
-        "ci:test": "phpunit --testdox --coverage-text",
-        "ci:types": "psalm",
-        "ci:infection": "infection",
-        "ci": [
-            "@ci:types",
-            "@ci:unit",
-            "@ci:style",
-            "@ci:infection"
+        "pr": [
+            "php-cs-fixer fix --dry-run -vvv",
+            "psalm --no-cache --stats",
+            "XDEBUG_MODE=coverage phpunit --testdox --coverage-text"
         ]
     }
 }

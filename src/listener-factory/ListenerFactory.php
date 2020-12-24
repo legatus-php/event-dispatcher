@@ -14,10 +14,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/../vendor/autoload.php';
+namespace Legatus\Support;
 
-$provider = new Legatus\Support\InMemoryListeners();
-$dispatcher = new Legatus\Support\EventDispatcher($provider);
-
-$provider->register(SomeEvent::class, new SomeListener());
-$dispatcher->dispatch(new SomeEvent());
+/**
+ * Interface ListenerFactory.
+ */
+interface ListenerFactory
+{
+    /**
+     * @param string $class
+     * @param string $method
+     *
+     * @return callable
+     */
+    public function create(string $class, string $method): callable;
+}

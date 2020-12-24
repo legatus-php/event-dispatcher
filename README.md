@@ -18,7 +18,7 @@ composer require legatus/event-dispatcher
 ```php
 <?php
 
-$provider = new Legatus\Support\InMemoryListenerProvider();
+$provider = new Legatus\Support\InMemoryListeners();
 $dispatcher = new Legatus\Support\EventDispatcher($provider);
 
 $provider->register(SomeEvent::class, new SomeListener());
